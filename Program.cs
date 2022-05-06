@@ -7,7 +7,7 @@ namespace SnakeAndLadderProblem
         public static void Main(string[] args)
         {
             //Declare Local Variables
-            int position = 0, dieroll, choice;
+            int position = 0, diceroll, choice, count = 0;
             Console.WriteLine("Player Start Position : " + position);
             //creating instance
             Random random = new Random();
@@ -17,13 +17,14 @@ namespace SnakeAndLadderProblem
                 //Generating Random Dieroll Numbers
                 if(position > 94)
                 {
-                    dieroll = random.Next(1, 2);
+                    diceroll = random.Next(1, 2);
                 }
                 else
                 {
-                    dieroll = random.Next(1, 7);
+                    diceroll = random.Next(1, 7);
                 }
-                Console.WriteLine("Dieroll Number is : " + dieroll);
+                Console.WriteLine("Diceroll Number is : " + diceroll);
+                count++;
                 //Generating Random  player choice Number 0 to 2
                 choice = random.Next(0, 3);
                 switch (choice)
@@ -41,17 +42,17 @@ namespace SnakeAndLadderProblem
                 //operation based on choice 
                 if (choice == 1)
                 {
-                    position += dieroll;
+                    position += diceroll;
                 }
                 else if (choice == 2)
                 {
-                    if (position < dieroll)
+                    if (position < diceroll)
                     {
                         position = 0;
                     }
                     else
                     {
-                        position -= dieroll;
+                        position -= diceroll;
                     }
                 }
                 else
@@ -60,6 +61,7 @@ namespace SnakeAndLadderProblem
                 }
                 Console.WriteLine("Player Current Position : " + position);
             }
+            Console.WriteLine("\n\tTotal Number Of Times Dice Rolled : "+count);
         }
     }
 }
